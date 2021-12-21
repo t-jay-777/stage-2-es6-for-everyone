@@ -8,9 +8,13 @@ export function renderArena(selectedFighters) {
   root.innerHTML = '';
   root.append(arena);
 
+  //https://learn.javascript.ru/async-await#tasks
   // todo:
   // - start the fight
+  const winner = await fight(...selectedFighters);
   // - when fight is finished show winner
+  showWinnerModal(winner);
+
 }
 
 function createArena(selectedFighters) {
