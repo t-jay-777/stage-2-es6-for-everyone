@@ -1,5 +1,8 @@
 import { createElement } from '../helpers/domHelper';
 import { createFighterImage } from './fighterPreview';
+import { fight } from './fight';
+
+import { showWinnerModal } from './modal/winner';
 
 export function renderArena(selectedFighters) {
   const root = document.getElementById('root');
@@ -11,9 +14,19 @@ export function renderArena(selectedFighters) {
   //https://learn.javascript.ru/async-await#tasks
   // todo:
   // - start the fight
-  const winner = await fight(...selectedFighters);
-  // - when fight is finished show winner
-  showWinnerModal(winner);
+  // try{
+  //   const winner = await fight(...selectedFighters);
+  //   // - when fight is finished show winner
+  //   showWinnerModal(winner);
+  // }
+  // catch(error){
+  //   throw error;
+  // }
+
+  fight(...selectedFighters)
+    .then((fighter) => {
+      showWinnerModal(fighter);
+    })
 
 }
 

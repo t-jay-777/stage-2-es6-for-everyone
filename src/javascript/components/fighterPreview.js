@@ -8,6 +8,12 @@ export function createFighterPreview(fighter, position) {
   });
 
   // todo: show fighter info (image, name, health, etc.)
+  if(fighter)
+  {
+    const image = createFighterImage(fighter);
+    const info = createFighterInfo(fighter);
+    fighterElement.append(image, info);
+  }
 
   return fighterElement;
 }
@@ -26,4 +32,26 @@ export function createFighterImage(fighter) {
   });
 
   return imgElement;
+}
+
+export function createFighterInfo(fighter) {
+
+  const name = fighter.name;
+  const health = fighter.health;
+  const attack = fighter.attack;
+  const defense = fighter.defence;
+
+  const fighterInfoElement = createElement({
+    tagName: 'div',
+    className: 'fighter-preview___info'
+  });
+
+  fighterInfoElement.innerHTML = `
+    <span><b>${name}</b></span><br>
+    <span>Health: ${health}HP</span></br>
+    <span>Attack: ${attack}</span></br>
+    <span>Defence: ${defense}</span></br>
+  `;
+
+  return fighterInfoElement;
 }
