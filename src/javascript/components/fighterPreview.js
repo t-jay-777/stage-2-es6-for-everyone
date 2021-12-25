@@ -39,7 +39,7 @@ export function createFighterInfo(fighter) {
   const name = fighter.name;
   const health = fighter.health;
   const attack = fighter.attack;
-  const defense = fighter.defence;
+  const defense = fighter.defense;
 
   const fighterInfoElement = createElement({
     tagName: 'div',
